@@ -1,0 +1,115 @@
+Form.js
+import React from 'react';
+import { useForm, FormProvider } from 'react-hook-form';
+import UserDetails from './UserDetails';
+import ContactInformation from './ContactInformation';
+import Address from './Address';
+import SubmitReset from './SubmitReset';
+
+const RegistrationForm = () => {
+  const methods = useForm();
+
+  return (
+    <FormProvider {...methods}>
+      <form>
+        <UserDetails />
+        <ContactInformation />
+        <Address />
+        <SubmitReset/>
+      </form>
+    </FormProvider>
+  );
+};
+
+export default RegistrationForm;
+
+SubmitReset.js
+
+
+
+import React from 'react';
+import { useFormContext } from 'react-hook-form';
+
+const SubmitResetComponent = () => {
+  const { handleSubmit, reset } = useFormContext();
+
+  const onSubmit = (data) => {
+    console.log(data); // You can handle form submission here
+  };
+
+  return (
+    <div>
+      <button onClick={handleSubmit(onSubmit)}>Submit</button>
+      <button onClick={reset}>Reset</button>
+    </div>
+  );
+};
+
+export default SubmitResetComponent;
+
+
+ContactInformation.js
+
+
+import React from 'react';
+import { useFormContext } from 'react-hook-form';
+
+const ContactInfoComponent = () => {
+  const { register } = useFormContext();
+
+  return (
+    <div>
+      <input type="email" {...register('email')} placeholder="Email" />
+      <input type="tel" {...register('phoneNumber')} placeholder="Phone Number" />
+      <input {...register('linkedin')} placeholder="LinkedIn Address" />
+    </div>
+  );
+};
+
+export default ContactInfoComponent;
+
+
+UserDetails.js
+
+
+
+
+import React from 'react';
+import { useFormContext } from 'react-hook-form';
+
+const UserDetailsComponent = () => {
+  const { register } = useFormContext();
+
+  return (
+    <div>
+      <input {...register('firstName')} placeholder="First Name" />
+      <input {...register('lastName')} placeholder="Last Name" />
+      <input type="date" {...register('dateOfBirth')} placeholder="Date of Birth" />
+    </div>
+  );
+};
+
+export default UserDetailsComponent;
+
+Address.js
+
+
+import React from 'react';
+import { useFormContext } from 'react-hook-form';
+
+const AddressComponent = () => {
+  const { register } = useFormContext();
+
+  return (
+    <div>
+      <input {...register('doorNumber')} placeholder="Door Number" />
+      <input {...register('streetName')} placeholder="Street Name" />
+      <input {...register('city')} placeholder="City" />
+      <input {...register('state')} placeholder="State" />
+      <input {...register('country')} placeholder="Country" />
+      <input {...register('pinCode')} placeholder="Pin Code" />
+    </div>
+  );
+};
+
+export default AddressComponent;

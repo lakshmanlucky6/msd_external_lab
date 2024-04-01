@@ -1,0 +1,11 @@
+###get 
+get http://localhost:3000/
+
+###post
+post http://localhost:3000/
+
+###put 
+put http://localhost:3000/user
+
+###delete
+delete http://localhost:3000/user
